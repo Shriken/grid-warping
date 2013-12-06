@@ -24,6 +24,15 @@ GAME.setup = function() {
 
 	GAME.grid = GAME.Grids.newGrid(50, 50, 5, 5);
 	GAME.tgrid = GAME.Grids.newGrid(200, 50, 5, 5);
+
+	var grid = GAME.grid,
+		tgrid = GAME.tgrid;
+
+	for (var j=0; j<tgrid.height; j++) {
+		for (var i=0; i<tgrid.width; i++) {
+			tgrid[j][i].x += 10*Math.random();
+		}
+	}
 }
 
 GAME.step = function() {
