@@ -28,6 +28,8 @@ GAME.Renderer = (function() {
 				joinPoints(tgrid, i, j, i, j+1);
 			}
 		}
+
+		drawPoint(GAME.point);
 	}
 
 	var joinPoints = function(grid, x1, y1, x2, y2) {
@@ -41,9 +43,16 @@ GAME.Renderer = (function() {
 		}
 	}
 
+	var drawPoint = function(point) {
+		ctx.beginPath();
+		ctx.arc(point.x, point.y, 3, 0, 2*Math.PI);
+		ctx.fill();
+	}
+
 	return {
 		draw : draw,
 		joinPoints : joinPoints,
+		drawPoint : drawPoint
 	}
 
 })();

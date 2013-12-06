@@ -20,6 +20,17 @@ GAME.Grids = (function() {
 		return points;
 	}
 
+	var transformPoint = function(p, grid1, grid2) {
+		// assuming uniform grid1
+		var pt = {},
+		    rectx = (p.x - grid1.x) / spacing,
+		    recty = (p.y - grid1.y) / spacing,
+			xinrect = (p.x - grid1/x) % spacing,
+			yinrect = (p.y - grid1/y) % spacing;
+
+		
+	}
+
 	var newPoint = function(x, y) {
 		return {
 			x : x,
@@ -28,7 +39,9 @@ GAME.Grids = (function() {
 	}
 
 	return {
-		newGrid : newGrid
+		newGrid : newGrid,
+		newPoint : newPoint,
+		transformPoint : transformPoint
 	}
 
 })();
