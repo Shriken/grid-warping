@@ -22,8 +22,8 @@ GAME.setConsts({
 
 GAME.setup = function() {
 
-	GAME.grid = GAME.Renderer.newGrid(50, 50, 5, 5);
-	GAME.tgrid = GAME.Renderer.newGrid(200, 50, 5, 5);
+	GAME.grid = GAME.Grids.newGrid(50, 50, 5, 5);
+	GAME.tgrid = GAME.Grids.newGrid(200, 50, 5, 5);
 }
 
 GAME.step = function() {

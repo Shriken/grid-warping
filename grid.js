@@ -1,4 +1,4 @@
-GAME.Grid = (function() {
+GAME.Grids = (function() {
 	
 	var newGrid = function(x, y, width, height) {
 		var points = [],
@@ -18,6 +18,13 @@ GAME.Grid = (function() {
 		points.spacing = spacing;
 
 		return points;
+	}
+
+	var newPoint = function(x, y) {
+		return {
+			x : x,
+			y : y
+		};
 	}
 
 	return {

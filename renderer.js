@@ -3,13 +3,6 @@ GAME.Renderer = (function() {
 	var canvas  = GAME.canvas,
 	    ctx     = GAME.ctx;
 
-	var newPoint = function(x, y) {
-		return {
-			x : x,
-			y : y
-		};
-	}
-
 	var draw = function() {
 
 		var grid = GAME.grid;
@@ -51,7 +44,6 @@ GAME.Renderer = (function() {
 	return {
 		draw : draw,
 		joinPoints : joinPoints,
-		newPoint : newPoint
 	}
 
 })();
