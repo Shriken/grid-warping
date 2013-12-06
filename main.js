@@ -31,6 +31,7 @@ GAME.setup = function() {
 	for (var j=0; j<tgrid.height; j++) {
 		for (var i=0; i<tgrid.width; i++) {
 			tgrid[j][i].x += 10*Math.random();
+			tgrid[j][i].y += 10*Math.random();
 		}
 	}
 }
