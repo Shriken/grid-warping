@@ -25,8 +25,8 @@ GAME.setup = function() {
 	GAME.grid = GAME.Grids.newGrid(50, 50, 5, 5);
 	GAME.tgrid = GAME.Grids.newGrid(200, 50, 5, 5);
 	GAME.point = {
-		x : 50 + 10*10*Math.random(),
-		y : 50 + 10*10*Math.random()
+		x : 50 + 5*20*Math.random(),
+		y : 50 + 5*20*Math.random()
 	}
 
 	var grid = GAME.grid,
