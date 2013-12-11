@@ -30,6 +30,7 @@ GAME.Renderer = (function() {
 		}
 
 		drawPoint(GAME.point);
+		drawPoint(GAME.tpoint);
 	}
 
 	var joinPoints = function(grid, x1, y1, x2, y2) {
