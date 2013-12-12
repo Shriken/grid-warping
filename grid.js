@@ -107,6 +107,39 @@ GAME.Grids = (function() {
 		return newPoint;
 	}
 
+	/*
+	 * Take a line, defined by two points, and transform it across a grid.
+	 */
+	var transformLine = function(line, grid, tgrid) {
+
+		var rectx1 = Math.floor((line[0].x - grid.x) / grid.spacing),
+		    recty1 = Math.floor((line[0].y - grid.y) / grid.spacing),
+		    rectx2 = Math.floor((line[1].x - grid.x) / grid.spacing),
+		    recty2 = Math.floor((line[1].y - grid.y) / grid.spacing),
+			m = (line[1].y - line[0].y) / (line[1].x - line[0].x),
+		    points = [],
+			tpoints = [];
+
+		points.push(line[0]);
+		for (var i = rectx1; i < rectx2; i++) {
+			// make one point on either side of the grid-rect boundaries
+			var x = grid.x + grid.spacing * (i + 0.9);
+			var y = line[0].y + (x - line[0].x) * m;
+			points.push(newPoint(x, y));
+
+			var x = grid.x + grid.spacing * (i + 1.1);
+			var y = line[0].y + (x - line[0].x) * m;
+			points.push(newPoint(x, y));
+		}
+
+		points.push(line[1]);
+		for (var i = 0; i < points.length; i++) {
+			tpoints.push(transformPoint(points[i], grid, tgrid));
+		}
+
+		return tpoints;
+	}
+
 	var newPoint = function(x, y) {
 		return {
 			x : x,
@@ -129,6 +162,7 @@ GAME.Grids = (function() {
 		newGrid : newGrid,
 		newPoint : newPoint,
 		transformPoint : transformPoint,
+		transformLine : transformLine,
 		clonePoint : clonePoint
 	}
 

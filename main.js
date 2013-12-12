@@ -22,18 +22,17 @@ GAME.setConsts({
 
 GAME.setup = function() {
 
-	GAME.grid = GAME.Grids.newGrid(400, 50, 5, 5);
-	GAME.tgrid = GAME.Grids.newGrid(50, 50, 5, 5);
+	GAME.grid = GAME.Grids.newGrid(400, 50, 5, 1);
+	GAME.tgrid = GAME.Grids.newGrid(50, 50, 5, 1);
 	var grid = GAME.grid,
 		tgrid = GAME.tgrid;
 
-	GAME.points = [];
-	GAME.tpoints = [];
-
-	GAME.point = {
-		x : grid.x,
-		y : grid.y
-	}
+	var x1 = grid.x + grid.spacing * 0.5,
+	    y1 = grid.y + grid.spacing * 0.5,
+	    x2 = grid.x + grid.spacing * (grid.width - 1.5),
+	    y2 = grid.y + grid.spacing * 0.5;
+	GAME.line = [GAME.Grids.newPoint(x1, y1),
+	             GAME.Grids.newPoint(x2, y2)];
 
 	for (var j=0; j<tgrid.height; j++) {
 		for (var i=0; i<tgrid.width; i++) {
@@ -44,22 +43,14 @@ GAME.setup = function() {
 
 	GAME.canvas.onmousemove = GAME.Input.mousemove;
 
-	GAME.tpoint = GAME.Grids.transformPoint(GAME.point, GAME.grid, GAME.tgrid);
+	GAME.tline = GAME.Grids.transformLine(GAME.line, GAME.grid, GAME.tgrid);
 	GAME.Renderer.draw(GAME.grid);
 }
 
 GAME.step = function() {
-
-	if (GAME.point.x != GAME.I_CURSOR_X || GAME.point.y != GAME.I_CURSOR_Y) {
-		GAME.point = GAME.Grids.newPoint(GAME.I_CURSOR_X, GAME.I_CURSOR_Y);
-		GAME.points.push(GAME.point);
-		var p = GAME.Grids.transformPoint(GAME.point, GAME.grid, GAME.tgrid);
-		if (p)
-			GAME.tpoint = p;
-	}
-
-	GAME.Renderer.draw(GAME.grid);
+}
+/*	GAME.Renderer.draw(GAME.grid);
 
 	// setup the next one
 	setTimeout(GAME.step, 0.1);
-}
+}*/
